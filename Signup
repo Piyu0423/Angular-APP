@@ -1,0 +1,48 @@
+<div class="signup-page">
+  <div class ="layout">
+    <div class="header">
+        <h3>Risk Manager</h3>
+      </div>
+    <div class="container"> 
+      <div class="row">
+        <div class="col-md-6 border-center">
+            <p>some text here
+              <br>
+            some text<br>
+            some text <br>
+          some text</p>
+        </div>
+        <div class="col-md-6">
+            <div class="form">
+                <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                  <label data-error="Required field!"></label>
+              
+                  <input class="validate" 
+                    type="text" 
+                    name="UserName" 
+                    placeholder="Organization Name" 
+                    formControlName="organizationName" 
+                    required
+                  >
+                  <small class="text-danger" *ngIf="signUpForm.get('organizationName').dirty && signUpForm.get('organizationName').invalid">
+                    Organization name is required.
+                  </small>
+              
+                  <input class="validate" type="password" name="password" placeholder="Password" formControlName="password" required minlength="6">
+                  <small class="text-danger" *ngIf="signUpForm.get('password').dirty && !signUpForm.get('password').valid">
+                    <p *ngIf="signUpForm.get('password').errors.required">Password is required.</p>
+                    <p *ngIf="signUpForm.get('password').errors.minlength">Password must be 6 characters long.</p>
+                  </small>
+              
+                  <input class="validate" type="email" name="email" formControlName="email" placeholder="Email Address">
+                  <small class="text-danger" *ngIf="signUpForm.get('email').dirty && signUpForm.get('email').invalid">
+                      <p *ngIf="signUpForm.get('email').errors.required">Email address is required.</p>
+                      <p *ngIf="signUpForm.get('email').errors">Email address is invalid.</p>
+                  </small>
+                </form>
+            </div>
+          </div>
+      </div>
+   </div>
+  </div>
+</div>
